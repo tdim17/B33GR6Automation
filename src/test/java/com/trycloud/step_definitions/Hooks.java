@@ -1,7 +1,5 @@
 package com.trycloud.step_definitions;
 
-
-
 import com.trycloud.utilities.BrowserUtils;
 import com.trycloud.utilities.ConfigurationReader;
 import com.trycloud.utilities.Driver;
@@ -46,10 +44,8 @@ public class Hooks {
 
         }
 
-
-
         BrowserUtils.sleep(2);
-        // Driver.closeDriver();
+        Driver.closeDriver();
 
     }
 
