@@ -27,8 +27,8 @@ public class LoginStepDefs {
             username = ConfigurationReader.getProperty("username_role2");
             password = ConfigurationReader.getProperty("password_role2");
         }
-        //send username and password and login        
-        loginPage.login(username,password);
+        //send username and password and login
+      loginPage.login(username,password);
     }
 
     @Given("the user logged in with username as {string} and password as {string}")
