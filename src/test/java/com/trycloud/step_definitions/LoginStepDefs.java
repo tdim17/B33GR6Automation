@@ -28,7 +28,6 @@ public class LoginStepDefs {
             password = ConfigurationReader.getProperty("password_role2");
         }
         //send username and password and login
-        //new LoginPage().login(username,password);
         loginPage.login(username,password);
     }
 
