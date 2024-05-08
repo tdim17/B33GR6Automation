@@ -1,0 +1,47 @@
+package com.trycloud.pages;
+
+import com.trycloud.utilities.BrowserUtils;
+import com.trycloud.utilities.Driver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.CacheLookup;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+import java.util.List;
+
+public class DashboardPage {
+
+    public DashboardPage() {
+        PageFactory.initElements(Driver.getDriver(), this);
+    }
+
+    @FindBy (xpath="//li[@data-id='files']")
+    public WebElement fileFolder;
+
+    @FindBy (xpath="//li[@data-id='photos']")
+    public WebElement photosFolder;
+
+    @FindBy (xpath="//li[@data-id='activity']")
+    public WebElement activityFolder;
+
+    @FindBy (xpath="//li[@data-id='spreed']")
+    public WebElement talkFolder;
+
+    @FindBy (xpath="//li[@data-id='contacts']")
+    public WebElement contactsFolder;
+
+    @FindBy (xpath="//li[@data-id='circles']")
+    public WebElement circlesFolder;
+
+    @FindBy (xpath="//li[@data-id='calendar']")
+    public WebElement calendarFolder;
+
+    @FindBy (xpath="//li[@data-id='deck']")
+    public WebElement deckFolder;
+
+}
