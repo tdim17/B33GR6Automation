@@ -10,16 +10,8 @@ import org.openqa.selenium.Keys;
 
 public class ContactModule_StepDefinitions {
 
-    // LoginStepDefs loginStepDefs = new LoginStepDefs();
     DashboardPage dashboardPage = new DashboardPage();
     ContactPage contactPage = new ContactPage();
-
-//    @Given("the user is already logged under a {string} role")
-//    public void theUserIsAlreadyLoggedUnderARole(String userType) {
-//
-//        loginStepDefs.the_user_logged_in_as(userType);
-//    }
-
 
     @Given("user is on Dashboard page")
     public void user_is_on_dashboard_page() {
