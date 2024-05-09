@@ -20,8 +20,6 @@ public class ContactPage {
     @FindBy (xpath=" //div[@class='popover__inner']//input[2]")
     public WebElement inputNewGroupName;
 
-    // Just to learn how it works
-
 
 
 
