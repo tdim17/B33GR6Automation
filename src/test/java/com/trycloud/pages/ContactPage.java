@@ -7,7 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class ContactPage {
 
-    // update to check
     public ContactPage (){
         PageFactory.initElements(Driver.getDriver(), this);
     }
