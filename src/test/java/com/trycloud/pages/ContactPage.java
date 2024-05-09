@@ -11,19 +11,14 @@ public class ContactPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    @FindBy (xpath=" //span[@title='+ New group']")
-    public WebElement addNewGroup1;
+//    @FindBy (xpath=" //span[@title='+ New group']")
+//    public WebElement addNewGroup1;
 
     @FindBy (xpath=" //button[@aria-label='Actions']")
     public WebElement addNewGroup2;
 
     @FindBy (xpath=" //div[@class='popover__inner']//input[2]")
     public WebElement inputNewGroupName;
-
-
-
-
-
 
 
 
