@@ -1,11 +1,13 @@
 package com.trycloud.pages;
 
 import com.trycloud.utilities.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
+import java.util.Random;
 
 public class DeckPage {
 
@@ -48,10 +50,10 @@ public WebElement boardNameInputBox;
 
 //@FindBy(xpath = "//div[@class='board']//h3[@class='stack__title has-tooltip']")
 @FindBy(xpath = "//div[@class='stack__header']//h3")
-    public WebElement listHeader;
+    public List<WebElement> listHeaders;
 
 @FindBy(xpath = "//div[@class='stack__header']//button[@rel='noreferrer noopener']")
-    public WebElement addCardButton;
+    public List<WebElement> addCardButtons;
 
 @FindBy(xpath = "//input[@placeholder='Card name']")
     public WebElement cardNameInputBox;
@@ -60,7 +62,7 @@ public WebElement boardNameInputBox;
     public WebElement addNewCardButton;
 
 @FindBy(xpath = "//div[@class='card-upper']//span")
-    public WebElement headerOfCard;
+    public List<WebElement> headersOfCard;
 
 @FindBy(id = "app-sidebar-vue")
     public WebElement cardSideBar;
@@ -77,6 +79,26 @@ public WebElement boardNameInputBox;
 @FindBy(xpath = "//div[@class='avatardiv popovermenu-wrapper has-tooltip']")
     public WebElement userAvatarOnCard;
 //need to assert src attribute
+
+
+public WebElement randomBoardPick(List<WebElement> boardListNames){
+    Random random = new Random();
+    int randomIndex = random.nextInt(boardListNames.size());
+    return boardListNames.get(randomIndex);
+
+}
+
+public WebElement randomListPick(List<WebElement> listHeaders){
+    Random random = new Random();
+    int randomIndex = random.nextInt(listHeaders.size());
+    return listHeaders.get(randomIndex);
+}
+
+public WebElement randomAddCardButton(List<WebElement> addCardButtons){
+    Random random = new Random();
+    int randomIndex = random.nextInt(addCardButtons.size());
+    return addCardButtons.get(randomIndex);
+}
 
 
 
