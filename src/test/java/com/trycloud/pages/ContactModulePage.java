@@ -5,20 +5,24 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ContactPage {
+public class ContactModulePage {
 
-    public ContactPage (){
+    public ContactModulePage(){
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
 //    @FindBy (xpath=" //span[@title='+ New group']")
-//    public WebElement addNewGroup1;
+//    public WebElement createNewGroup1;
 
-    @FindBy (xpath=" //button[@aria-label='Actions']")
-    public WebElement addNewGroup2;
+    @FindBy (xpath=" //button[@class='icon action-item__menutoggle icon-add']")
+    public WebElement createNewGroup1;
 
     @FindBy (xpath=" //div[@class='popover__inner']//input[2]")
     public WebElement inputNewGroupName;
+
+    @FindBy (id="new-contact-button")
+    public WebElement createNewContact;
+
 
 
 

@@ -1,4 +1,6 @@
 /target/
 /.idea/
 /*.iml
-*.properties
+configuration.properties
+/initials_arch/
+/src/test/resources/initials_arch/
