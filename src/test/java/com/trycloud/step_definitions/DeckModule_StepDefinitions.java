@@ -3,14 +3,11 @@ package com.trycloud.step_definitions;
 import com.trycloud.pages.DashboardPage;
 import com.trycloud.pages.DeckPage;
 import com.trycloud.utilities.BrowserUtils;
-import com.trycloud.utilities.ConfigurationReader;
-import com.trycloud.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class DeckModule_StepDefinitions {
@@ -96,8 +93,8 @@ public class DeckModule_StepDefinitions {
     public void user_should_see_just_created_and_a_new_card_interface_on_the_side_menu(String newCardName) {
         Assert.assertTrue(deckPage.cardSideBar.isDisplayed());
         for (WebElement listHeader : deckPage.listHeaders) {
-            if(listHeader.equals(newCardName)){
-                Assert.assertTrue(listHeader.equals(deckPage.sideBarCardHeader));
+            if(listHeader.getText().equals(newCardName)){
+                Assert.assertTrue(listHeader.getText().equals(deckPage.sideBarCardHeader.getText()));
             }
         }
 
