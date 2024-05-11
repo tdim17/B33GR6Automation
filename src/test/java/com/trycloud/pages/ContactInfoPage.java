@@ -7,9 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class ContactIndividualPage {
+public class ContactInfoPage {
 
-    public ContactIndividualPage() {
+    public ContactInfoPage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
@@ -23,6 +23,10 @@ public class ContactIndividualPage {
 
     @FindBy (xpath = "//div[@id='app-navigation-vue']//span[@class='app-navigation-entry__title']")
     public List<WebElement> groupsListPanel;
+
+    @FindBy (xpath = "(//div[@class='multiselect__tags-wrap'])[8]")
+    public WebElement addNewProperty;
+
 
 
 }

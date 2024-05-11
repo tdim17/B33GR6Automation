@@ -12,3 +12,10 @@ Feature: Users should be able to login
     Then user can create a new group
     Then user can create a new contact
     And user can see all groups name through the dropdown menu inside existing contact
+
+  Scenario: User should be able to add a new property
+    Given user is on Dashboard page
+    Then user click Contact page
+    Then user can create a new group
+    And user can add a new property "Univerasry" on the contact Info page
+
