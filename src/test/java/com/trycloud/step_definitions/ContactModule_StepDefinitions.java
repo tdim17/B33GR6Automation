@@ -7,6 +7,7 @@ import com.trycloud.utilities.BrowserUtils;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
@@ -46,19 +47,10 @@ public class ContactModule_StepDefinitions {
         contactModulePage.inputNewGroupName.sendKeys("GroupC" + Keys.ENTER);
     }
 
-//    @Then("user can create a new contact")
-//    public void userCanCreateANewContact() {
-//        contactModulePage.createNewContact.click();
-//        BrowserUtils.sleep(2);
-//        contactIndividualPage.fullNameInbox.clear();
-//        BrowserUtils.sleep(2);
-//        contactIndividualPage.fullNameInbox.sendKeys("Albert One" + Keys.ENTER);//
-//    }
-
 
     @Then("user can create a new contact")
     public void userCanCreateANewContact() {
-        for (int i = 1; i < 4; i++) {
+        for (int i = 1; i < 3; i++) {
             contactModulePage.createNewContact.click();
             BrowserUtils.sleep(1);
             contactIndividualPage.fullNameInbox.clear();
@@ -71,14 +63,18 @@ public class ContactModule_StepDefinitions {
     @And("user can see all groups name through the dropdown menu inside existing contact")
     public void userCanSeeAllGroupsNameThroughTheDropdownMenuInsideExistingContact() {
 
-        List<String> groups = new ArrayList<>();
+            List<String> list1 = new ArrayList<>();
+            for (WebElement element : contactIndividualPage.groupsList) {
+                list1.add(element.getAttribute( "title" ));
+            }
 
-        for (WebElement element : contactIndividualPage.groupsList) {
-            groups.add(element.getText());
-        }
-        System.out.println("groups = " + groups);
-
-
+            List<String> list2 = new ArrayList<>();
+            for (WebElement each : contactIndividualPage.groupsListPanel) {
+                list2.add(each.getText());
+            }
+            System.out.println("list1: " + list1);
+            System.out.println("list2: " + list2);
+            Assert.assertTrue(list2.containsAll(list1));
 
     }
 }

@@ -18,13 +18,11 @@ public class ContactIndividualPage {
             public WebElement fullNameInbox;
 
 
-    @FindBy (xpath = "(//div[@class='multiselect__content-wrapper'])[6]//div[@class='name-parts']")
+    @FindBy (xpath = "(//div[@class='multiselect__content-wrapper'])[6]//div")
     public List<WebElement> groupsList;
 
-
-
-
-
+    @FindBy (xpath = "//div[@id='app-navigation-vue']//span[@class='app-navigation-entry__title']")
+    public List<WebElement> groupsListPanel;
 
 
 }
