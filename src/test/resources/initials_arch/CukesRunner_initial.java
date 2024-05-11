@@ -1,4 +1,4 @@
-package com.trycloud.runners;
+package initials_arch;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -9,13 +9,14 @@ import org.junit.runner.RunWith;
         plugin = {
                 "html:target/cucumber-reports.html",
                 "rerun:target/rerun.txt",
-                "me.jvt.cucumber.report.PrettyReports:target/cucumber",
-                "json:target/cucumber.json"
+                "me.jvt.cucumber.report.PrettyReports:target/cucumber"
         },
         features = "src/test/resources/features",
         glue = "com/trycloud/step_definitions",
         dryRun = false,
-        tags = "@dmitry",
+        tags = "@projecttest",
         publish = true //generating a report with public link
 )
-public class CukesRunner {}
+public class CukesRunner_initial {}
+
+

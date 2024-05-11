@@ -1,4 +1,4 @@
-package com.trycloud.step_definitions;
+package initials_arch;
 
 import com.trycloud.utilities.BrowserUtils;
 import com.trycloud.utilities.ConfigurationReader;
