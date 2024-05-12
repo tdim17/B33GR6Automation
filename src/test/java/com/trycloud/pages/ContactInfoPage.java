@@ -72,6 +72,29 @@ public class ContactInfoPage {
     }
 
 
+    // This method converts a numeric (int) value of Month to a String representation:
+    public String convertMonthToString(int monthNumber) {
+        String monthString;
+        switch (monthNumber) {
+            case 1 -> monthString = "Jan";
+            case 2 -> monthString = "Feb";
+            case 3 -> monthString = "Mar";
+            case 4 -> monthString = "Apr";
+            case 5 -> monthString = "May";
+            case 6 -> monthString = "Jun";
+            case 7 -> monthString = "Jul";
+            case 8 -> monthString = "Aug";
+            case 9 -> monthString = "Sep";
+            case 10 -> monthString = "Oct";
+            case 11 -> monthString = "Nov";
+            case 12 -> monthString = "Dec";
+            default -> monthString = "Invalid Month Name";
+        }
+        return monthString;
+    }
+
+
+
 
 
 

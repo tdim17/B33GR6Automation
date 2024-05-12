@@ -38,13 +38,12 @@ public class ContactModule_StepDefinitions {
     public void userCanCreateANewGroup() {
         contactModulePage.createNewGroup1.click();
         BrowserUtils.sleep(1);
-        contactModulePage.inputNewGroupName.sendKeys("GroupA" + Keys.ENTER);
+        contactModulePage.inputNewGroupName.sendKeys("Group A" + Keys.ENTER);
         contactModulePage.createNewGroup1.click();
         BrowserUtils.sleep(1);
-        contactModulePage.inputNewGroupName.sendKeys("GroupB" + Keys.ENTER);
+        contactModulePage.inputNewGroupName.sendKeys("Group B" + Keys.ENTER);
         contactModulePage.createNewGroup1.click();
-//        BrowserUtils.sleep(1);
-//        contactModulePage.inputNewGroupName.sendKeys("GroupC" + Keys.ENTER);
+
     }
 
 
@@ -75,7 +74,6 @@ public class ContactModule_StepDefinitions {
             System.out.println("list1: " + list1);
             System.out.println("list2: " + list2);
             Assert.assertTrue(list2.containsAll(list1));
-
     }
 
     @And("user can add a new property Anniversary on the contact Info page")
@@ -83,7 +81,6 @@ public class ContactModule_StepDefinitions {
 
         contactInfoPage.addNewProperty.click();
         contactInfoPage.addPropertyAnniversary.click();
-
     }
 
 
@@ -94,19 +91,21 @@ public class ContactModule_StepDefinitions {
         BrowserUtils.waitFor(1);
 
         contactInfoPage.calendarYearButton.click();
-        // BrowserUtils.waitFor(1);
-
         contactInfoPage.yearSet(year).click();
-        // BrowserUtils.waitFor(1);
-
         contactInfoPage.monthSet(month).click();
-        // BrowserUtils.waitFor(1);
-
         contactInfoPage.daySet(day).click();
-        // BrowserUtils.waitFor(2);
-
         contactInfoPage.clickButton.click();
+        BrowserUtils.waitFor(2);
 
+        String valueActual = contactInfoPage.inputBoxAnniversary.getAttribute("value");
+        System.out.println("valueActual  : " + valueActual);
+
+        String monthString = contactInfoPage.convertMonthToString(month);
+        String valueExpected = monthString + " " + day + ", " + year;
+
+        System.out.println("valueExpected: " + valueExpected);
+
+        Assert.assertEquals(valueExpected, valueActual);
 
     }
 }
