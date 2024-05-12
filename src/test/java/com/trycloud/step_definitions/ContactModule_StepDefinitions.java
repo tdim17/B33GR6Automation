@@ -83,19 +83,29 @@ public class ContactModule_StepDefinitions {
 
         contactInfoPage.addNewProperty.click();
         contactInfoPage.addPropertyAnniversary.click();
+
+    }
+
+
+    @Then("user can add date of Anniversary {int} {int} {int}")
+    public void userCanAddDateOfAnniversary(int year, int month, int day) {
+
         contactInfoPage.inputBoxAnniversary.click();
         BrowserUtils.waitFor(1);
+
         contactInfoPage.calendarYearButton.click();
-        BrowserUtils.waitFor(1);
-        contactInfoPage.calendarYear2029Chose.click();
-        BrowserUtils.waitFor(1);
+        // BrowserUtils.waitFor(1);
 
-        contactInfoPage.calendarMonthJulyChose.click();
-        BrowserUtils.waitFor(1);
-        contactInfoPage.calendarDay20Chose.click();
-        BrowserUtils.waitFor(2);
+        contactInfoPage.yearSet(year).click();
+        // BrowserUtils.waitFor(1);
+
+        contactInfoPage.monthSet(month).click();
+        // BrowserUtils.waitFor(1);
+
+        contactInfoPage.daySet(day).click();
+        // BrowserUtils.waitFor(2);
+
         contactInfoPage.clickButton.click();
-
 
 
     }

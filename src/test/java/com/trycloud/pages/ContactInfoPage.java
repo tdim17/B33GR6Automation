@@ -1,6 +1,7 @@
 package com.trycloud.pages;
 
 import com.trycloud.utilities.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -33,23 +34,11 @@ public class ContactInfoPage {
     public WebElement inputBoxAnniversary;
 
 
-
-
     @FindBy (xpath="//span[@class='mx-calendar-header-label']//button[@type='button'][2]")
     public WebElement calendarYearButton;
 
     @FindBy (xpath="//span[@class='mx-calendar-header-label']//button[@type='button'][1]")
     public WebElement calendarMonthButton;
-
-    @FindBy (xpath="//table[@class='mx-table mx-table-year']//td[@data-year='2029']")
-    public WebElement calendarYear2029Chose;
-
-    @FindBy (xpath="//table[@class='mx-table mx-table-month']//td[@data-month='6']")
-    public WebElement calendarMonthJulyChose;
-
-    @FindBy (xpath="//table[@class='mx-table mx-table-date']//td[.='20']")
-    public WebElement calendarDay20Chose;
-
 
 
     @FindBy (xpath="//div[@class='mx-calendar mx-calendar-panel-date']//button[3]")
@@ -67,6 +56,21 @@ public class ContactInfoPage {
 
     @FindBy (xpath="//button[@class='mx-btn mx-datepicker-btn-confirm']")
     public WebElement clickButton;
+
+
+    // These methods work with the calendar options. They receive the year, month, day parameters as an argument and return the corresponding locators:
+    public WebElement yearSet(int yearNumber){
+        return Driver.getDriver().findElement(By.xpath("//table[@class='mx-table mx-table-year']//td[@data-year='"+yearNumber+"']"));
+    }
+
+    public WebElement monthSet(int monthNumber){
+        return Driver.getDriver().findElement(By.xpath("//table[@class='mx-table mx-table-month']//td[@data-month='"+(monthNumber-1)+"']"));
+    }
+
+    public WebElement daySet(int dayNumber){
+        return Driver.getDriver().findElement(By.xpath("//table[@class='mx-table mx-table-date']//td[.='"+dayNumber+"']"));
+    }
+
 
 
 
