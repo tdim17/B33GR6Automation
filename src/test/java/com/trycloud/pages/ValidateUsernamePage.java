@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 public class ValidateUsernamePage {
 
     public ValidateUsernamePage(){
+
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
