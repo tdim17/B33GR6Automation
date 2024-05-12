@@ -43,14 +43,14 @@ public class ContactModule_StepDefinitions {
         BrowserUtils.sleep(1);
         contactModulePage.inputNewGroupName.sendKeys("GroupB" + Keys.ENTER);
         contactModulePage.createNewGroup1.click();
-        BrowserUtils.sleep(1);
-        contactModulePage.inputNewGroupName.sendKeys("GroupC" + Keys.ENTER);
+//        BrowserUtils.sleep(1);
+//        contactModulePage.inputNewGroupName.sendKeys("GroupC" + Keys.ENTER);
     }
 
 
     @Then("user can create a new contact")
     public void userCanCreateANewContact() {
-        for (int i = 1; i < 3; i++) {
+        for (int i = 1; i < 2; i++) {
             contactModulePage.createNewContact.click();
             BrowserUtils.sleep(1);
             contactInfoPage.fullNameInbox.clear();
@@ -78,9 +78,34 @@ public class ContactModule_StepDefinitions {
 
     }
 
-    @And("user can add a new property {string} on the contact Info page")
-    public void userCanAddANewPropertyOnTheContactInfoPage(String arg0) {
+    @And("user can add a new property Anniversary on the contact Info page")
+    public void userCanAddANewPropertyOnTheContactInfoPage() {
 
+        contactInfoPage.addNewProperty.click();
+        contactInfoPage.addPropertyAnniversary.click();
+
+    }
+
+
+    @Then("user can add date of Anniversary {int} {int} {int}")
+    public void userCanAddDateOfAnniversary(int year, int month, int day) {
+
+        contactInfoPage.inputBoxAnniversary.click();
+        BrowserUtils.waitFor(1);
+
+        contactInfoPage.calendarYearButton.click();
+        // BrowserUtils.waitFor(1);
+
+        contactInfoPage.yearSet(year).click();
+        // BrowserUtils.waitFor(1);
+
+        contactInfoPage.monthSet(month).click();
+        // BrowserUtils.waitFor(1);
+
+        contactInfoPage.daySet(day).click();
+        // BrowserUtils.waitFor(2);
+
+        contactInfoPage.clickButton.click();
 
 
     }
