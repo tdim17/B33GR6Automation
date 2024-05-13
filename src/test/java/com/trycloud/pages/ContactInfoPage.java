@@ -15,71 +15,68 @@ public class ContactInfoPage {
     }
 
 
-    @FindBy (id="contact-fullname")
-            public WebElement fullNameInbox;
+    @FindBy(xpath = "//*[@id='contact-fullname']")
+    public WebElement fullNameInbox;
 
-    @FindBy (xpath = "(//div[@class='multiselect__content-wrapper'])[6]//div")
+    @FindBy(xpath = "(//div[@class='multiselect__content-wrapper'])[6]//div")
     public List<WebElement> groupsList;
 
-    @FindBy (xpath = "//div[@id='app-navigation-vue']//span[@class='app-navigation-entry__title']")
+    @FindBy(xpath = "//div[@id='app-navigation-vue']//span[@class='app-navigation-entry__title']")
     public List<WebElement> groupsListPanel;
 
-    @FindBy (xpath = "(//input[@autocomplete='nope'])[6]")
+    @FindBy(xpath = "(//input[@autocomplete='nope'])[6]")
     public WebElement addNewProperty;
 
-    @FindBy (xpath="//li[@class='multiselect__element']//div[@title='Anniversary']")
+    @FindBy(xpath = "//li[@class='multiselect__element']//div[@title='Anniversary']")
     public WebElement addPropertyAnniversary;
 
-    @FindBy (xpath="//input[@class='mx-input']")
+    @FindBy(xpath = "//input[@class='mx-input']")
     public WebElement inputBoxAnniversary;
 
-
-    @FindBy (xpath="//span[@class='mx-calendar-header-label']//button[@type='button'][2]")
+    @FindBy(xpath = "//span[@class='mx-calendar-header-label']//button[@type='button'][2]")
     public WebElement calendarYearButton;
 
-    @FindBy (xpath="//span[@class='mx-calendar-header-label']//button[@type='button'][1]")
-    public WebElement calendarMonthButton;
-
-    @FindBy (xpath="//div[@class='mx-calendar mx-calendar-panel-date']//button[3]")
-    public WebElement calendarButtonDoubleRight;   // button "year >>"
-
-    @FindBy (xpath="//div[@class='mx-calendar mx-calendar-panel-date']//button[1]")
-    public WebElement calendarButtonDoubleLeft;   // button "year <<"
-
-    @FindBy (xpath="//div[@class='mx-calendar mx-calendar-panel-date']//button[2]")
-    public WebElement calendarButtonLeft;   // button "month <<"
-
-    @FindBy (xpath="//div[@class='mx-calendar mx-calendar-panel-date']//button[2]")
-    public WebElement calendarButtonRight;   // button "month >>"
-
-    @FindBy (xpath="//button[@class='mx-btn mx-datepicker-btn-confirm']")
+    @FindBy(xpath = "//button[@class='mx-btn mx-datepicker-btn-confirm']")
     public WebElement calendarClickButton;
 
-    @FindBy (xpath="//div[@class='action-item header-menu']//button[@class='icon action-item__menutoggle action-item__menutoggle--default-icon']")
+    @FindBy(xpath = "//div[@class='action-item header-menu']//button[@class='icon action-item__menutoggle action-item__menutoggle--default-icon']")
     public WebElement contactExtraTripleMenu;
 
 
-    @FindBy (xpath="//div[@class='popover__inner']//span[@class='action-button__icon icon-delete']")
+    @FindBy(xpath = "//div[@class='popover__inner']//span[@class='action-button__icon icon-delete']")
     public WebElement deleteInsideTripleMenu;
 
 
-    @FindBy (xpath="//div[@class='vue-recycle-scroller__item-wrapper']/div")
+    @FindBy(xpath = "//span[@class='mx-calendar-header-label']//button[@type='button'][1]")
+    public WebElement calendarMonthButton;
+
+    @FindBy(xpath = "//div[@class='mx-calendar mx-calendar-panel-date']//button[3]")
+    public WebElement calendarButtonDoubleRight;   // button "year >>"
+
+    @FindBy(xpath = "//div[@class='mx-calendar mx-calendar-panel-date']//button[1]")
+    public WebElement calendarButtonDoubleLeft;   // button "year <<"
+
+    @FindBy(xpath = "//div[@class='mx-calendar mx-calendar-panel-date']//button[2]")
+    public WebElement calendarButtonLeft;   // button "month <<"
+
+    @FindBy(xpath = "//div[@class='mx-calendar mx-calendar-panel-date']//button[2]")
+    public WebElement calendarButtonRight;   // button "month >>"
+
+
+    @FindBy(xpath = "//div[@class='vue-recycle-scroller__item-wrapper']/div")
     public WebElement choseContact;
 
 
     // These methods work with the calendar options. They receive the year, month, day parameters as an argument and return the corresponding locators:
-    public WebElement yearSet(int yearNumber){
-        return Driver.getDriver().findElement(By.xpath("//table[@class='mx-table mx-table-year']//td[@data-year='"+yearNumber+"']"));
+    public WebElement yearSet(int yearNumber) {
+        return Driver.getDriver().findElement(By.xpath("//table[@class='mx-table mx-table-year']//td[@data-year='" + yearNumber + "']"));
     }
-
-    public WebElement monthSet(int monthNumber){
-        return Driver.getDriver().findElement(By.xpath("//table[@class='mx-table mx-table-month']//td[@data-month='"+(monthNumber-1)+"']"));
+    public WebElement monthSet(int monthNumber) {
+        return Driver.getDriver().findElement(By.xpath("//table[@class='mx-table mx-table-month']//td[@data-month='" + (monthNumber - 1) + "']"));
     }
-
-    public WebElement daySet(int dayNumber){
-        return Driver.getDriver().findElement(By.xpath("//table[@class='mx-table mx-table-date']//td[.='"+dayNumber+"']"));
+    public WebElement daySet(int dayNumber) {
+        return Driver.getDriver().findElement(By.xpath("//table[@class='mx-table mx-table-date']//td[.='" + dayNumber + "']"));
     }
-
 
 
     // This method converts a numeric (int) value of Month to a String representation:
@@ -102,6 +99,5 @@ public class ContactInfoPage {
         }
         return monthString;
     }
-
 
 }
