@@ -23,4 +23,3 @@ Feature: Users should be able to login
     And user can add a new property Anniversary on the contact Info page
     Then user can add date of Anniversary 2029 07 20
     And delete all contacts on the page
-

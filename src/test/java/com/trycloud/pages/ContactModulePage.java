@@ -31,5 +31,4 @@ public class ContactModulePage {
     public List<WebElement> contactList;
 
 
-
 }

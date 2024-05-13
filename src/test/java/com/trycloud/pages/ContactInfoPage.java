@@ -63,10 +63,8 @@ public class ContactInfoPage {
     public WebElement deleteInsideTripleMenu;
 
 
-
     @FindBy (xpath="//div[@class='vue-recycle-scroller__item-wrapper']/div")
     public WebElement choseContact;
-
 
 
     // These methods work with the calendar options. They receive the year, month, day parameters as an argument and return the corresponding locators:
@@ -81,7 +79,6 @@ public class ContactInfoPage {
     public WebElement daySet(int dayNumber){
         return Driver.getDriver().findElement(By.xpath("//table[@class='mx-table mx-table-date']//td[.='"+dayNumber+"']"));
     }
-
 
 
 
@@ -105,21 +102,6 @@ public class ContactInfoPage {
         }
         return monthString;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
