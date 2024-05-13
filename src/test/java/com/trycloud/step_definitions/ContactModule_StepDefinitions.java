@@ -28,7 +28,6 @@ public class ContactModule_StepDefinitions {
     @Then("user click Contact page")
     public void user_click_contact_page() {
 
-        // BrowserUtils.sleep(1);
         BrowserUtils.waitForVisibility(dashboardPage.contactsFolder,5);
         dashboardPage.contactsFolder.click();
     }
@@ -36,7 +35,7 @@ public class ContactModule_StepDefinitions {
 
     @Then("user can create a new group")
     public void userCanCreateANewGroup() {
-        String preffix ="";
+        String preffix;
         for (int i = 1; i <= 2; i++) {
             contactModulePage.createNewGroup1.click();
             BrowserUtils.waitForVisibility(contactModulePage.inputNewGroupName,5);
@@ -54,7 +53,7 @@ public class ContactModule_StepDefinitions {
 
     @Then("user can create a new contact")
     public void userCanCreateANewContact() {
-        for (int i = 1; i <= 7; i++) {
+        for (int i = 1; i <= 5; i++) {
             contactModulePage.createNewContact.click();
             BrowserUtils.waitForVisibility(contactInfoPage.fullNameInbox,5);
             contactInfoPage.fullNameInbox.clear();
@@ -117,7 +116,7 @@ public class ContactModule_StepDefinitions {
     @And("delete all contacts on the page")
     public void deleteAllContactsOnThePage() {
 
-        BrowserUtils.waitFor(1);
+        BrowserUtils.waitForVisibility(contactInfoPage.contactExtraTripleMenu, 5);
 
         List<WebElement> elements = contactModulePage.contactList;
 
@@ -126,7 +125,6 @@ public class ContactModule_StepDefinitions {
                 element.click();
                 contactInfoPage.contactExtraTripleMenu.click();
                 contactInfoPage.deleteInsideTripleMenu.click();
-                // BrowserUtils.waitFor(1);
             } catch (org.openqa.selenium.NoSuchElementException e) {
                 // skip if contact is absent on the page
             }
