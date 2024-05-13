@@ -10,7 +10,6 @@ import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,32 +28,38 @@ public class ContactModule_StepDefinitions {
     @Then("user click Contact page")
     public void user_click_contact_page() {
 
-        BrowserUtils.sleep(2);
+        // BrowserUtils.sleep(1);
+        BrowserUtils.waitForVisibility(dashboardPage.contactsFolder,5);
         dashboardPage.contactsFolder.click();
     }
 
 
     @Then("user can create a new group")
     public void userCanCreateANewGroup() {
-        contactModulePage.createNewGroup1.click();
-        BrowserUtils.sleep(1);
-        contactModulePage.inputNewGroupName.sendKeys("Group A" + Keys.ENTER);
-        contactModulePage.createNewGroup1.click();
-        BrowserUtils.sleep(1);
-        contactModulePage.inputNewGroupName.sendKeys("Group B" + Keys.ENTER);
-        contactModulePage.createNewGroup1.click();
+        String preffix ="";
+        for (int i = 1; i <= 2; i++) {
+            contactModulePage.createNewGroup1.click();
+            BrowserUtils.waitForVisibility(contactModulePage.inputNewGroupName,5);
 
+            switch (i) {
+                case 1 -> preffix = "A";
+                case 2 -> preffix = "B";
+                // default -> preffix = String.valueOf(i);
+                default -> preffix = "default " +i;
+            }
+            contactModulePage.inputNewGroupName.sendKeys("Group "+ preffix + Keys.ENTER);
+        }
     }
 
 
     @Then("user can create a new contact")
     public void userCanCreateANewContact() {
-        for (int i = 1; i < 2; i++) {
+        for (int i = 1; i <= 7; i++) {
             contactModulePage.createNewContact.click();
-            BrowserUtils.sleep(1);
+            BrowserUtils.waitForVisibility(contactInfoPage.fullNameInbox,5);
             contactInfoPage.fullNameInbox.clear();
-            BrowserUtils.sleep(1);
-            contactInfoPage.fullNameInbox.sendKeys("Albert " +i + Keys.ENTER);
+            BrowserUtils.waitForVisibility(contactInfoPage.fullNameInbox,5);
+            contactInfoPage.fullNameInbox.sendKeys("User " +i + Keys.ENTER);
         }
     }
 
@@ -94,7 +99,7 @@ public class ContactModule_StepDefinitions {
         contactInfoPage.yearSet(year).click();
         contactInfoPage.monthSet(month).click();
         contactInfoPage.daySet(day).click();
-        contactInfoPage.clickButton.click();
+        contactInfoPage.calendarClickButton.click();
         BrowserUtils.waitFor(2);
 
         String valueActual = contactInfoPage.inputBoxAnniversary.getAttribute("value");
@@ -107,5 +112,24 @@ public class ContactModule_StepDefinitions {
 
         Assert.assertEquals(valueExpected, valueActual);
 
+    }
+
+    @And("delete all contacts on the page")
+    public void deleteAllContactsOnThePage() {
+
+        BrowserUtils.waitFor(1);
+
+        List<WebElement> elements = contactModulePage.contactList;
+
+        for (WebElement element : elements) {
+            try {
+                element.click();
+                contactInfoPage.contactExtraTripleMenu.click();
+                contactInfoPage.deleteInsideTripleMenu.click();
+                // BrowserUtils.waitFor(1);
+            } catch (org.openqa.selenium.NoSuchElementException e) {
+                // skip if contact is absent on the page
+            }
+        }
     }
 }

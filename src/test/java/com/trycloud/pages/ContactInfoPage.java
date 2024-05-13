@@ -40,7 +40,6 @@ public class ContactInfoPage {
     @FindBy (xpath="//span[@class='mx-calendar-header-label']//button[@type='button'][1]")
     public WebElement calendarMonthButton;
 
-
     @FindBy (xpath="//div[@class='mx-calendar mx-calendar-panel-date']//button[3]")
     public WebElement calendarButtonDoubleRight;   // button "year >>"
 
@@ -53,9 +52,21 @@ public class ContactInfoPage {
     @FindBy (xpath="//div[@class='mx-calendar mx-calendar-panel-date']//button[2]")
     public WebElement calendarButtonRight;   // button "month >>"
 
-
     @FindBy (xpath="//button[@class='mx-btn mx-datepicker-btn-confirm']")
-    public WebElement clickButton;
+    public WebElement calendarClickButton;
+
+    @FindBy (xpath="//div[@class='action-item header-menu']//button[@class='icon action-item__menutoggle action-item__menutoggle--default-icon']")
+    public WebElement contactExtraTripleMenu;
+
+
+    @FindBy (xpath="//div[@class='popover__inner']//span[@class='action-button__icon icon-delete']")
+    public WebElement deleteInsideTripleMenu;
+
+
+
+    @FindBy (xpath="//div[@class='vue-recycle-scroller__item-wrapper']/div")
+    public WebElement choseContact;
+
 
 
     // These methods work with the calendar options. They receive the year, month, day parameters as an argument and return the corresponding locators:
@@ -70,6 +81,8 @@ public class ContactInfoPage {
     public WebElement daySet(int dayNumber){
         return Driver.getDriver().findElement(By.xpath("//table[@class='mx-table mx-table-date']//td[.='"+dayNumber+"']"));
     }
+
+
 
 
     // This method converts a numeric (int) value of Month to a String representation:
