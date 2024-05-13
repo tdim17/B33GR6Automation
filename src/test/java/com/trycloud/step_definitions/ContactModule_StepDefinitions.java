@@ -35,7 +35,7 @@ public class ContactModule_StepDefinitions {
 
     @Then("user can create a new group")
     public void userCanCreateANewGroup() {
-        String preffix ="";
+        String preffix;
         for (int i = 1; i <= 2; i++) {
             contactModulePage.createNewGroup1.click();
             BrowserUtils.waitForVisibility(contactModulePage.inputNewGroupName,5);
