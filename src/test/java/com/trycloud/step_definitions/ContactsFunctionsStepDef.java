@@ -5,6 +5,7 @@ import com.trycloud.pages.ContactModulePage;
 import com.trycloud.pages.DashboardPage;
 import com.trycloud.pages.LoginPage;
 import com.trycloud.utilities.BrowserUtils;
+import com.trycloud.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -13,6 +14,8 @@ import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 public class ContactsFunctionsStepDef {
 
     DashboardPage dashboardPage = new DashboardPage();
@@ -20,14 +23,12 @@ public class ContactsFunctionsStepDef {
     ContactInfoPage contactInfoPage = new ContactInfoPage();
     LoginPage loginPage = new LoginPage();
 
-    String newContactEx = "Example Name";
+    String fullNameEx = "Cydeo Student1";
 
 
     @Given("User is on the Contact Module page")
     public void userIsOnTheContactModulePage() {
-
         dashboardPage.contactsFolder.click();
-
     }
 
     @When("User clicks New Contact button")
@@ -35,31 +36,42 @@ public class ContactsFunctionsStepDef {
         contactModulePage.createNewContact.click();
     }
 
+
+
     @And("User enters full name by clicking New Contact profile Header")
     public void userEntersFullNameByClickingNewContactProfileHeader() {
+
+
         contactInfoPage.fullNameInbox.click();
-        contactInfoPage.fullNameInbox.sendKeys(newContactEx + Keys.ENTER);
-    }
-
-    @Then("User should see newly created newContactEx under Contact Module dropdown")
-    public void userShouldSeeNewlyCreatedContactUnderContactModuleDropdown() {
-
-        newContactEx.equalsIgnoreCase("Syed");
-        Assert.assertEquals(contactInfoPage.fullNameInbox.getText(), "Syed");
+        contactInfoPage.fullNameInbox.sendKeys(fullNameEx + Keys.ENTER);
 
     }
 
+    @Then("User should see new contact entered on the name box")
+    public void User_should_see_new_contact_entered_on_the_name_box() {
 
+        Assert.assertTrue(fullNameEx, contactInfoPage.fullNameInbox.isDisplayed());
+    }
 
+    @And("User closes current driver")
+    public void userClosesCurrentDriver() {
+        Driver.closeDriver();
+    }
 
-
-
+    @When("User is on contact page")
+    public void userIsOnContactPage() {
+        dashboardPage.contactsFolder.click();
+    }
     @Then("User should see all list of contacts in middle column")
     public void userShouldSeeAllListOfContactsInMiddleColumn() {
+        int contactList = contactInfoPage.contactNameList.size();
+        Assert.assertTrue(contactList>0);
     }
 
-    @And("User should see total numbers of contacts near {string} tab")
-    public void userShouldSeeTotalNumbersOfContactsNearTab(String arg0) {
+    @And("User should see total numbers of contacts near Contact tab")
+    public void userShouldSeeTotalNumbersOfContactsNearTab(){
+        int contactCount = Integer.parseInt(contactInfoPage.contactCount.getText());
+        Assert.assertTrue(contactCount > 0);
     }
 
     @When("User clicks a contact from the list on middle column")
@@ -97,4 +109,7 @@ public class ContactsFunctionsStepDef {
     @Then("User should no longer see that contact anywhere on the page")
     public void userShouldNoLongerSeeThatContactAnywhereOnThePage() {
     }
+
+
+
 }

@@ -21,6 +21,12 @@ public class ContactInfoPage {
     @FindBy (xpath = "(//div[@class='multiselect__content-wrapper'])[6]//div")
     public List<WebElement> groupsList;
 
+    @FindBy (xpath = "//div[@class='vue-recycle-scroller__item-wrapper']")
+    public List<WebElement> contactNameList;
+
+    @FindBy (xpath = "(//div[@class='app-navigation-entry__counter'])")
+    public WebElement contactCount;
+
     @FindBy (xpath = "//div[@id='app-navigation-vue']//span[@class='app-navigation-entry__title']")
     public List<WebElement> groupsListPanel;
 

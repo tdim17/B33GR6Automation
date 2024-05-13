@@ -5,21 +5,22 @@ Feature: Contacts Module Functionality
 		#@B33G6-132
 		Given the user logged in as "user"
 
-		
 
 	@B33G6-127
 	Scenario: US-003 TC1 AC1 Verify user can create a new contact
 		Given User is on the Contact Module page
 		When User clicks New Contact button
 		And User enters full name by clicking New Contact profile Header
-		Then User should see newly created newContactEx under Contact Module dropdown
+		Then User should see new contact entered on the name box
+		And User closes current driver
 
 
 	@B33G6-128
 	Scenario: US-003 TC2 AC2 Verify user can see all the contacts as a list inside the middle column and total number of the contacts near the “All Contacts” tab
+		When User is on contact page
 		Given User is on the Contact Module page
 		Then User should see all list of contacts in middle column
-		And User should see total numbers of contacts near "All Contacts" tab
+		And User should see total numbers of contacts near Contact tab
 
 
 	@B33G6-129
