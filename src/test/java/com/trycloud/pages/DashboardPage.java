@@ -36,4 +36,6 @@ public class DashboardPage {
     @FindBy (xpath="//li[@data-id='deck']")
     public WebElement deckFolder;
 
+
+
 }
