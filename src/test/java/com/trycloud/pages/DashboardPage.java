@@ -43,7 +43,8 @@ public class DashboardPage {
     @FindBy(xpath = "//a[@class='header-menu__trigger']")
     public WebElement searchHeader;
 
-    @FindBy(css = ".unified-search__input-wrapper>form.unified-search__form")
+//    @FindBy(css = ".unified-search__input-wrapper>form.unified-search__form")
+    @FindBy(xpath = "//input[@class=\"unified-search__form-input\"]")
     public WebElement searchForm;
 
     @FindBy(css = "span.unified-search__result-content")
