@@ -128,5 +128,7 @@ public class ContactModule_StepDefinitions {
                 // skip if contact is absent on the page
             }
         }
+
     }
+
 }
