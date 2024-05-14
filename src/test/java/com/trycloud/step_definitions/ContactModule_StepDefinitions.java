@@ -126,6 +126,7 @@ public class ContactModule_StepDefinitions {
                 contactInfoPage.deleteInsideTripleMenu.click();
             } catch (org.openqa.selenium.NoSuchElementException e) {
                 // skip if contact is absent on the page
+
             }
         }
     }
