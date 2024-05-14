@@ -1,6 +1,11 @@
-Feature: User should be able to display listed items in Activity Module
-  by creating a new board/list/card and modifying them under Deck Module.
+
+Feature: Users should be able to login
+
 
   Background: User is already in Dashboard page
-    #@B33G6-124
     Given the user logged in as "user"
+
+    Scenario: User can display all listed items under the Activity module
+      When user click on Activity Button
+      Then user see display by you button
+      Then user see display by others button
