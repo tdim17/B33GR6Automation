@@ -110,7 +110,6 @@ public class ContactModule_StepDefinitions {
         System.out.println("valueExpected: " + valueExpected);
 
         Assert.assertEquals(valueExpected, valueActual);
-
     }
 
     @And("delete all contacts on the page")
