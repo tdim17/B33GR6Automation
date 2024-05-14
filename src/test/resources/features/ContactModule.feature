@@ -6,7 +6,7 @@ Feature: Users should be able to login
     Given the user logged in as "user"
 
 
-  Scenario: US-008 TC1 User should be able to create a new group and add any contact into a group under Contacts module
+  Scenario: User should be able to create a new group and add any contact into a group under Contacts module
     Given user is on Dashboard page
     Then user click Contact page
     Then user can create a new group
@@ -15,7 +15,7 @@ Feature: Users should be able to login
     And delete all contacts on the page
 
 
-  Scenario: US-008 TC2 User should be able to add a new property
+  Scenario: User should be able to add a new property
     Given user is on Dashboard page
     Then user click Contact page
     Then user can create a new contact

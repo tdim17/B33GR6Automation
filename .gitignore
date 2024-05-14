@@ -2,3 +2,5 @@
 /.idea/
 /*.iml
 configuration.properties
+/initials_arch/
+/runners/
