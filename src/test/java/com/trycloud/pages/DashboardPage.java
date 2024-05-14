@@ -12,6 +12,7 @@ public class DashboardPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
+
     @FindBy (xpath="//li[@data-id='files']")
     public WebElement fileFolder;
 
@@ -38,7 +39,6 @@ public class DashboardPage {
 
     @FindBy(id = "expand")
     public WebElement settingMenuBtn;
-
 
     @FindBy(xpath = "//a[@class='header-menu__trigger']")
     public WebElement searchHeader;
