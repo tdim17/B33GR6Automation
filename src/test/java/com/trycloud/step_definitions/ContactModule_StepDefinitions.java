@@ -110,7 +110,6 @@ public class ContactModule_StepDefinitions {
         System.out.println("valueExpected: " + valueExpected);
 
         Assert.assertEquals(valueExpected, valueActual);
-
     }
 
     @And("delete all contacts on the page")
@@ -127,6 +126,7 @@ public class ContactModule_StepDefinitions {
                 contactInfoPage.deleteInsideTripleMenu.click();
             } catch (org.openqa.selenium.NoSuchElementException e) {
                 // skip if contact is absent on the page
+
             }
         }
     }
