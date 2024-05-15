@@ -102,16 +102,19 @@ public class ContactsFunctionsStepDef {
     }
 
     //SCENARIO 04
-    @And("User clicks {string} on the top right from profile column")
-    public void userClicksOnTheTopRightFromProfileColumn(String arg0) {
+    @When("User clicks three dot menu on the top right from profile column")
+    public void User_clicks_three_dot_menu_on_the_top_right_from_profile_column(){
+        contactInfoPage.contactExtraTripleMenu.click();
     }
 
-    @And("User selects {string} button from the dropdown")
-    public void userSelectsButtonFromTheDropdown(String arg0) {
+    @And("User clicks delete button from the dropdown")
+    public void User_clicks_delete_button_from_the_dropdown(){
+        contactInfoPage.deleteInsideTripleMenu.click();
     }
 
     @Then("User should no longer see that contact anywhere on the page")
     public void userShouldNoLongerSeeThatContactAnywhereOnThePage() {
+        Assert.assertTrue(contactInfoPage.contactDeleteNoteProof.isDisplayed());
     }
 
 

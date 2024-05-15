@@ -36,7 +36,6 @@ Feature: Contacts Module Functionality
 	@B33G6-130
 	Scenario: US-003 TC4 AC4 Verify user can delete any selected contact
 		Given User is on the Contact Module page
-		When User clicks a contact from the list on middle column
-		And User clicks "three dot" on the top right from profile column
-		And User selects "delete" button from the dropdown
+		When User clicks three dot menu on the top right from profile column
+		And User clicks delete button from the dropdown
 		Then User should no longer see that contact anywhere on the page
