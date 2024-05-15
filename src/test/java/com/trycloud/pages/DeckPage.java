@@ -15,7 +15,7 @@ public class DeckPage {
     }
 
 
-@FindBy(xpath = "//div[@class=\'avatardiv avatardiv-shown\']//img")
+@FindBy(xpath = "//div[@class='avatardiv avatardiv-shown']//img")
 public WebElement userAvatar;
 
 @FindBy (xpath = "//a[@class='app-navigation-toggle']")
@@ -35,7 +35,7 @@ public WebElement boardNameInputBox;
 
     //For Assertion
 
-    @FindBy(xpath = "//div[@class=\'board-title\']//h2")
+    @FindBy(xpath = "//div[@class='board-title']//h2")
     public WebElement activeBoardHeader;
 
 @FindBy(id = "stack-add")

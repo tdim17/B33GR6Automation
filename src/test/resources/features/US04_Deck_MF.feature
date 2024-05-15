@@ -1,4 +1,4 @@
-@DeckFeatures
+@US04_DeckFeatures
 Feature: User should be able to manage the works
   by creating a new board/list/card and modifying them under Deck Module.
 

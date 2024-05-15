@@ -3,24 +3,15 @@ package com.trycloud.step_definitions;
 import com.trycloud.pages.DashboardPage;
 import com.trycloud.pages.DeckPage;
 import com.trycloud.utilities.BrowserUtils;
-import com.trycloud.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.zh_cn.而且;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-
-public class DeckModule_StepDefinitions {
+public class DeckModule_StepDefinitions_MF {
     DeckPage deckPage = new DeckPage();
     DashboardPage dashboardPage = new DashboardPage();
 //    String boardName;
@@ -35,6 +26,9 @@ public class DeckModule_StepDefinitions {
     }
     @When("user clicks on Add board button of the All boards side menu")
     public void user_clicks_on_add_board_button_of_the_all_boards_side_menu() {
+        if(!deckPage.addBoardButton.isDisplayed()){
+            deckPage.sideMenuButton.click();
+        }
         try{
             deckPage.addBoardButton.click();
         }catch (Exception e){
@@ -129,13 +123,19 @@ public class DeckModule_StepDefinitions {
 
     @When("user picks a already existing card and click a tree dots menu element")
     public void user_picks_a_already_existing_card_and_click_a_tree_dots_menu_element() {
+        if(deckPage.listHeaders.isEmpty()){
+            deckPage.addListBarButton.click();
+            deckPage.listNameInputBox.sendKeys("Test list"+ Keys.ENTER);
+            System.err.println("No list on the current board,test list created");
+        }
+
         if(!deckPage.headersOfCard.isEmpty()){
             deckPage.randomCardControlsButtonClick(deckPage.cardControlsButtons);
         }else {
             deckPage.randomAddCardButtonClick(deckPage.addCardButtons);
             deckPage.cardNameInputBox.sendKeys("TestCard");
             deckPage.addNewCardButton.click();
-            System.err.println("No list on the current board,test list created");
+            System.err.println("No card on the current board,test card created");
             deckPage.cardControlsButton.click();
         }
 
