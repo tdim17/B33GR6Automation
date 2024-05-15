@@ -23,11 +23,18 @@ Scenario: US-004 TC2 AC2: Verify user can create a new list of card or task unde
 
 
   @B33G6-125
-  Scenario: US04 TC3 AC3: Verify User can add a new card/task on any list on the current board
+  Scenario: US-004 TC3 AC3: Verify User can add a new card/task on any list on the current board
     Given user is on the Deck page
     When user pick a random board from the All boards list
     And user pick any list on the current board and click on Add card button
     And write the name of the "new card" on the card name input field and send it
     Then user should see just created "new card" and a new card interface on the side menu
 
-
+  @B33G6-143
+Scenario: US-004 AC4 TC4: Verify user can assign any card/task
+  to himself/herself by using the three dots on the related card
+    Given user is on the Deck page
+    When user pick a random board from the All boards list
+    And user picks a already existing card and click a tree dots menu element
+    And click on Assign to me dropdown element of the card
+    Then user profile icon is displayed next to tree dots menu of the card
