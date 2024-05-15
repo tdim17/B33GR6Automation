@@ -15,7 +15,7 @@ public class ContactInfoPage {
 
 
     @FindBy (id="contact-fullname")
-            public WebElement fullNameInbox;
+    public WebElement fullNameInbox;
 
 
     @FindBy (xpath = "(//div[@class='multiselect__content-wrapper'])[6]//div")
@@ -26,6 +26,21 @@ public class ContactInfoPage {
 
     @FindBy (xpath = "(//div[@class='app-navigation-entry__counter'])")
     public WebElement contactCount;
+
+    @FindBy (xpath = "//button[@class='icon action-item__menutoggle icon-picture-force-white']")
+    public WebElement profilePhotoIcon;
+
+        @FindBy (xpath = "//*[text()='Choose from Files']")
+        public WebElement profileChooseFromFiles;
+
+        @FindBy (xpath = "//*[text()='Delete picture']")
+        public WebElement deleteProfilePicBttn;
+
+        @FindBy (xpath = "//*[@id='picker-filestable']//tbody//tr[3]")
+        public WebElement savedProfilePic01;
+
+        @FindBy (xpath = "//*[text()='Choose']")
+        public WebElement confirmProfilePicBttn;
 
     @FindBy (xpath = "//div[@id='app-navigation-vue']//span[@class='app-navigation-entry__title']")
     public List<WebElement> groupsListPanel;

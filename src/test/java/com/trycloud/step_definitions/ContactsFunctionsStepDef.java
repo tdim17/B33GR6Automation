@@ -13,6 +13,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
@@ -26,6 +27,8 @@ public class ContactsFunctionsStepDef {
     String fullNameEx = "Cydeo Student1";
 
 
+
+    //SCENARIO 01
     @Given("User is on the Contact Module page")
     public void userIsOnTheContactModulePage() {
         dashboardPage.contactsFolder.click();
@@ -35,7 +38,6 @@ public class ContactsFunctionsStepDef {
     public void userClicksNewContactButton() {
         contactModulePage.createNewContact.click();
     }
-
 
 
     @And("User enters full name by clicking New Contact profile Header")
@@ -53,15 +55,7 @@ public class ContactsFunctionsStepDef {
         Assert.assertTrue(fullNameEx, contactInfoPage.fullNameInbox.isDisplayed());
     }
 
-    @And("User closes current driver")
-    public void userClosesCurrentDriver() {
-        Driver.closeDriver();
-    }
-
-    @When("User is on contact page")
-    public void userIsOnContactPage() {
-        dashboardPage.contactsFolder.click();
-    }
+    //SCENARIO 02
     @Then("User should see all list of contacts in middle column")
     public void userShouldSeeAllListOfContactsInMiddleColumn() {
         int contactList = contactInfoPage.contactNameList.size();
@@ -74,30 +68,40 @@ public class ContactsFunctionsStepDef {
         Assert.assertTrue(contactCount > 0);
     }
 
-    @When("User clicks a contact from the list on middle column")
-    public void userClicksAContactFromTheListOnMiddleColumn() {
-    }
+    //SCENARIO 03
 
-    @And("User clicks profile photo icon near Contact Name on the right column")
+    @When("User clicks profile photo icon near Contact Name on the right column")
     public void userClicksProfilePhotoIconNearContactNameOnTheRightColumn() {
+        contactInfoPage.profilePhotoIcon.click();
     }
 
-    @And("User selects {string} from the dropdown")
-    public void userSelectsFromTheDropdown(String arg0) {
+    @And("User selects ChooseFromFiles from the dropdown")
+    public void User_selects_ChooseFromFiles_from_the_dropdown() {
+        BrowserUtils.waitFor(5);
+
+    contactInfoPage.profileChooseFromFiles.click();
+
+
     }
 
     @And("User selects a desired jpeg file")
     public void userSelectsADesiredJpegFile() {
+        contactInfoPage.savedProfilePic01.click();
     }
 
-    @And("User clicks {string} on bottom right in the frame")
-    public void userClicksOnBottomRightInTheFrame(String arg0) {
+    @And("User clicks Choose button on bottom right in the frame")
+    public void User_clicks_Choose_button_on_bottom_right_in_the_frame(){
+        contactInfoPage.confirmProfilePicBttn.click();
     }
 
-    @Then("User should see chosen photo on the proper profile")
-    public void userShouldSeeChosenPhotoOnTheProperProfile() {
+    @Then("User should see chosen photo on the profile photo")
+    public void User_should_see_chosen_photo_on_the_profile_photo() {
+        contactInfoPage.profilePhotoIcon.click();
+
+        Assert.assertTrue(contactInfoPage.deleteProfilePicBttn.isDisplayed());
     }
 
+    //SCENARIO 04
     @And("User clicks {string} on the top right from profile column")
     public void userClicksOnTheTopRightFromProfileColumn(String arg0) {
     }

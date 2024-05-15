@@ -12,26 +12,25 @@ Feature: Contacts Module Functionality
 		When User clicks New Contact button
 		And User enters full name by clicking New Contact profile Header
 		Then User should see new contact entered on the name box
-		And User closes current driver
 
 
 	@B33G6-128
 	Scenario: US-003 TC2 AC2 Verify user can see all the contacts as a list inside the middle column and total number of the contacts near the “All Contacts” tab
-		When User is on contact page
-		Given User is on the Contact Module page
+
+		When User is on the Contact Module page
 		Then User should see all list of contacts in middle column
 		And User should see total numbers of contacts near Contact tab
+
 
 
 	@B33G6-129
 	Scenario: US-003 TC3 AC3 Verify user can change the profile picture of any contact with a previously uploaded picture by using “Choose from files” option
 		Given User is on the Contact Module page
-		When User clicks a contact from the list on middle column
-		And User clicks profile photo icon near Contact Name on the right column
-		And User selects "Choose from files" from the dropdown
+		When User clicks profile photo icon near Contact Name on the right column
+		And User selects ChooseFromFiles from the dropdown
 		And User selects a desired jpeg file
-		And User clicks "Choose button" on bottom right in the frame
-		Then User should see chosen photo on the proper profile
+		And User clicks Choose button on bottom right in the frame
+		Then User should see chosen photo on the profile photo
 
 
 	@B33G6-130
