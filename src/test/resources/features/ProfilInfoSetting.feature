@@ -10,10 +10,10 @@ Feature: User should be able to change profile info
     # User can see at least following titles inside “Personal Info” under Profile Settings page;
       # => Full name/Email/Phone Number
   Scenario: User can see personal info under Profile Setting page
-  Given user is on the dashboard
-  Then user click on setting menu
-  Then user chose Setting from list
-  And user should see Personal Info
+    Given user is on the dashboard
+    Then user click on setting menu
+    Then user chose Setting from list
+    And user should see Personal Info
 
 #@B33G6_134
   #Name of the user in the Settings field should be the same with Full Name input box
