@@ -16,4 +16,9 @@ public class FilesPage {
     @FindBy(xpath = "//h2[@class=\"app-sidebar-header__maintitle\"]")
     public WebElement filesName;
 
+    @FindBy(id= "nextcloud")
+    public WebElement appIcon;
+
+
+
 }
