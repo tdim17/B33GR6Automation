@@ -54,7 +54,7 @@ public class ContactModule_StepDefinitions {
                 default -> preffix = "default " + i;
             }
             String groupName = "Group " + preffix;
-            contactModulePage.inputNewGroupName.sendKeys("Group " + preffix + Keys.ENTER);
+            contactModulePage.inputNewGroupName.sendKeys(groupName + Keys.ENTER);
             addedElements.add(groupName);
         }
 
