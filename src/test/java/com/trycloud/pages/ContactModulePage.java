@@ -30,5 +30,7 @@ public class ContactModulePage {
     @FindBy (xpath="//div[@class='vue-recycle-scroller__item-view']")
     public List<WebElement> contactList;
 
+    @FindBy (xpath="//ul[@class='app-navigation__list']//span[@class='app-navigation-entry__title']")
+    public List<WebElement> groupList;
 
 }

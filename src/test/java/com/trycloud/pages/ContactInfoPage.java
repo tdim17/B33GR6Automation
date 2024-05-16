@@ -27,11 +27,24 @@ public class ContactInfoPage {
     @FindBy(xpath = "(//input[@autocomplete='nope'])[6]")
     public WebElement addNewProperty;
 
+
+    @FindBy (xpath="//div[@class='multiselect property__value multiselect--above multiselect--single']//li[@class='multiselect__element']")
+    public WebElement propertiesList;
+
     @FindBy(xpath = "//li[@class='multiselect__element']//div[@title='Anniversary']")
     public WebElement addPropertyAnniversary;
 
+    // This method for Property options. It receives the Sting title of property as an argument and returns the parameterized locators:
+    public WebElement propertySet(String title) {
+        return Driver.getDriver().findElement(By.xpath("//li[@class='multiselect__element']//div[@title='" + title + "']"));
+    }
+
+    @FindBy (xpath = "//*[@class='property__value property__title--right']")
+    public List <WebElement> listOfAllPropertiesFromPage;
+
+
     @FindBy(xpath = "//input[@class='mx-input']")
-    public WebElement inputBoxAnniversary;
+    public WebElement inputEventCalendar;
 
     @FindBy(xpath = "//span[@class='mx-calendar-header-label']//button[@type='button'][2]")
     public WebElement calendarYearButton;
