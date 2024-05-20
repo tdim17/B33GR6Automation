@@ -153,13 +153,13 @@ public class BrowserUtils {
      * @param list of webelements
      * @return list of string
      */
-    public static List<String> getElementsText(List<WebElement> list) {
-        List<String> elemTexts = new ArrayList<>();
-        for (WebElement el : list) {
-            elemTexts.add(el.getText());
-        }
-        return elemTexts;
-    }
+//    public static List<String> getElementsText(List<WebElement> list) {
+//        List<String> elemTexts = new ArrayList<>();
+//        for (WebElement el : list) {
+//            elemTexts.add(el.getText());
+//        }
+//        return elemTexts;
+//    }
 
     /**
      * Extracts text from list of elements matching the provided locator into new List<String>
@@ -483,6 +483,33 @@ public class BrowserUtils {
     public static void waitForPresenceOfElement(By by, long time) {
         new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(time)).until(ExpectedConditions.presenceOfElementLocated(by));
     }
+    public static List<String> dropDownOptions_as_STRING(WebElement dropDownElement) {
+
+        Select month = new Select(dropDownElement);
+
+        // Storing all the ACTUAL options into a List of WebElements
+        List<WebElement> actualMonth_as_WEBELEMENT = month.getOptions();
+
+        // Creating an EMPTY list of String to store ACTUAL <option> as String
+        List<String> actualMonth_as_STRING = new ArrayList<>();
+
+        // Looping through the List<WebElement>, getting all options' texts, and storing them into List<String>
+        for (WebElement each : actualMonth_as_WEBELEMENT) {
+
+            actualMonth_as_STRING.add(each.getText());
+
+        }
+        return actualMonth_as_STRING;
+    }
+
+    public static List<String> getElementsText (List<WebElement>list){
+        List<String> elemTexts = new ArrayList<>();
+        for (WebElement el : list) {
+            elemTexts.add(el.getAttribute("innerText").trim());
+        }
+        return elemTexts;
+    }
+
 
 
 }
