@@ -1,5 +1,5 @@
 #@B33G6_US11
-Feature: User should be able to see listed items
+Feature: User should be able to see listed items under activity module
   Agile Story: As a user, I should be able to see listed items under the Activity module.
 
 
@@ -9,19 +9,21 @@ Feature: User should be able to see listed items
 
   #User can display all listed items under the Activity module.
 
-  Scenario: User can display all listed items under the Activity module
-    Given user is on the dashboard
-    Then user click on Activity Module
-    Then user should see ByYou folder
-    Then user should see ByOthers folder
-    Then user should see Circles folder
-    Then user should see Favorites folder
-    Then user should see FileChanges folder
-    Then user should see FileShares folder
-    Then user should see Calendar folder
-    Then user should see Todos folder
-    Then user should see Comments folder
-    Then user should see Deck folder
+  Scenario: Verify user can display all listed items under the Activity module
+    When User can click on activity module
+  Then User can display all listed items under the Activity module
+    |All activities|
+    |By you|
+    |By others|
+    |Circles|
+    |Favorites|
+    |File changes|
+    |File shares|
+    |Calendar|
+    |Todos|
+    |Comments|
+    |Deck|
+
 
 
 

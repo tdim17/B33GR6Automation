@@ -10,6 +10,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ActivityModule_StepDefinitions {
@@ -17,12 +18,31 @@ public class ActivityModule_StepDefinitions {
     DashboardPage dashboardPage = new DashboardPage();
     ActivityModulePage activityModulePage = new ActivityModulePage();
 
+    @When("User can click on activity module")
+    public void userCanClickOnActivityModule() {
+        dashboardPage.activityFolder.click();
+    }
+
+    @Then("User can display all listed items under the Activity module")
+    public void user_can_display_all_listed_items_under_the_activity_module(List<String> expActivity) {
+
+        List<String> actualActivityList = BrowserUtils.getElementsText(activityModulePage.activityunderlist);
+        System.out.println("List actual : " + actualActivityList);
+        System.out.println("List expect : " + expActivity);
+
+        Assert.assertEquals(expActivity,actualActivityList);
+
+    }
+
+
+
+
     /*@When("user is on the dashboard")
     public void user_is_on_the_dashboard() {
         System.out.println("User on the dashboard");
     }
 
-     */
+
 
     @Then("user click on Activity Module")
     public void user_click_on_activity_module() {
@@ -94,7 +114,7 @@ public class ActivityModule_StepDefinitions {
 
 
 
-     /*   System.out.println("By You is displayed - " + activityModulePage.byYou.isDisplayed());
+        System.out.println("By You is displayed - " + activityModulePage.byYou.isDisplayed());
         // activityModulePage.byYou.click();
         System.out.println("By Others is displayed - " + activityModulePage.byOthers.isDisplayed());
         System.out.println("Circles is displayed - " + activityModulePage.circles.isDisplayed());
@@ -149,3 +169,4 @@ public class ActivityModule_StepDefinitions {
     }
     */
 
+}
