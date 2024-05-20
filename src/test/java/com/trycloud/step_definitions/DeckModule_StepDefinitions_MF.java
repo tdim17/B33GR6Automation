@@ -8,9 +8,10 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
-public class DeckModule_StepDefinitions {
+public class DeckModule_StepDefinitions_MF {
     DeckPage deckPage = new DeckPage();
     DashboardPage dashboardPage = new DashboardPage();
 //    String boardName;
@@ -28,7 +29,17 @@ public class DeckModule_StepDefinitions {
         if(!deckPage.addBoardButton.isDisplayed()){
             deckPage.sideMenuButton.click();
         }
-        deckPage.addBoardButton.click();
+        try{
+            deckPage.addBoardButton.click();
+        }catch (Exception e){
+            deckPage.sideMenuButton.click();
+            deckPage.addBoardButton.click();
+        }
+
+//        if(!deckPage.addBoardButton.isDisplayed()){
+//            deckPage.sideMenuButton.click();
+//        }
+//        deckPage.addBoardButton.click();
     }
     @When("user write the {string} name on the board name input field and send it")
     public void user_write_the_name_on_the_board_name_input_field_and_send_it(String boardName) {
@@ -79,8 +90,17 @@ public class DeckModule_StepDefinitions {
     }
     @And("user pick any list on the current board and click on Add card button")
     public void userPickAnyListOnTheCurrentBoardAndClickOnAddCardButton() {
-        WebElement randomButton = deckPage.randomAddCardButton(deckPage.addCardButtons);
-        randomButton.click();
+//        WebElement randomButton = deckPage.randomAddCardButton(deckPage.addCardButtons);
+//        randomButton.click();
+       try {
+           deckPage.randomAddCardButtonClick(deckPage.addCardButtons);
+       }
+        catch (Exception e){
+            deckPage.addListBarButton.click();
+            deckPage.listNameInputBox.sendKeys("Test list"+ Keys.ENTER);
+            System.err.println("No list on the current board,test list created");
+            deckPage.randomAddCardButtonClick(deckPage.addCardButtons);
+        }
     }
 
     @When("write the name of the {string} on the card name input field and send it")
@@ -92,12 +112,52 @@ public class DeckModule_StepDefinitions {
     @Then("user should see just created {string} and a new card interface on the side menu")
     public void user_should_see_just_created_and_a_new_card_interface_on_the_side_menu(String newCardName) {
         Assert.assertTrue(deckPage.cardSideBar.isDisplayed());
-        for (WebElement listHeader : deckPage.listHeaders) {
-            if(listHeader.getText().equals(newCardName)){
-                Assert.assertTrue(listHeader.getText().equals(deckPage.sideBarCardHeader.getText()));
+        for (WebElement cardHeader : deckPage.headersOfCard) {
+            if(cardHeader.getText().equals(newCardName)){
+                Assert.assertTrue(cardHeader.getText().equals(deckPage.sideBarCardHeader.getText()));
             }
         }
 
+
+    }
+
+    @When("user picks a already existing card and click a tree dots menu element")
+    public void user_picks_a_already_existing_card_and_click_a_tree_dots_menu_element() {
+        if(deckPage.listHeaders.isEmpty()){
+            deckPage.addListBarButton.click();
+            deckPage.listNameInputBox.sendKeys("Test list"+ Keys.ENTER);
+            System.err.println("No list on the current board,test list created");
+        }
+
+        if(!deckPage.headersOfCard.isEmpty()){
+            deckPage.randomCardControlsButtonClick(deckPage.cardControlsButtons);
+        }else {
+            deckPage.randomAddCardButtonClick(deckPage.addCardButtons);
+            deckPage.cardNameInputBox.sendKeys("TestCard");
+            deckPage.addNewCardButton.click();
+            System.err.println("No card on the current board,test card created");
+            deckPage.cardControlsButton.click();
+        }
+
+    }
+    @When("click on Assign to me dropdown element of the card")
+    public void click_on_assign_to_me_dropdown_element_of_the_card() {
+       // WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(1));
+           try {
+              // wait.until(ExpectedConditions.visibilityOf(deckPage.assignToMeButton));
+               deckPage.assignToMeButton.click();
+           }catch(Exception e){
+               if(deckPage.unassignMyselfButton.isDisplayed()){
+                   System.out.println("User is already assigned");
+
+               }
+           }
+
+
+    }
+    @Then("user profile icon is displayed next to tree dots menu of the card")
+    public void user_profile_icon_is_displayed_next_to_tree_dots_menu_of_the_card() {
+        Assert.assertEquals(deckPage.userAvatar.getAttribute("src"),deckPage.userAvatarOnCard.getAttribute("src"));
 
     }
 

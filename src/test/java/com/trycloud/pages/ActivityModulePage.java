@@ -5,9 +5,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class ActivityModulePage {
 
     public ActivityModulePage(){PageFactory.initElements(Driver.getDriver(), this);}
+
+    @FindBy(xpath = "//*[@id='app-navigation']/ul/li")
+    public List<WebElement> activityunderlist;
+
+
 
     @FindBy(linkText = "By you")
     public WebElement byYou;
