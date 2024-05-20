@@ -22,6 +22,27 @@ public class ContactInfoPage {
     public List<WebElement> groupsList;
 
     @FindBy(xpath = "//div[@id='app-navigation-vue']//span[@class='app-navigation-entry__title']")
+    public List<WebElement> contactNameList;
+
+    @FindBy (xpath = "(//div[@class='app-navigation-entry__counter'])")
+    public WebElement contactCount;
+
+    @FindBy (xpath = "//button[@class='icon action-item__menutoggle icon-picture-force-white']")
+    public WebElement profilePhotoIcon;
+
+        @FindBy (xpath = "//*[text()='Choose from Files']")
+        public WebElement profileChooseFromFiles;
+
+        @FindBy (xpath = "//*[text()='Delete picture']")
+        public WebElement deleteProfilePicBttn;
+
+        @FindBy (xpath = "//*[@id='picker-filestable']//tbody//tr[3]")
+        public WebElement savedProfilePic01;
+
+        @FindBy (xpath = "//*[text()='Choose']")
+        public WebElement confirmProfilePicBttn;
+
+    @FindBy (xpath = "//div[@id='app-navigation-vue']//span[@class='app-navigation-entry__title']")
     public List<WebElement> groupsListPanel;
 
     @FindBy(xpath = "(//input[@autocomplete='nope'])[6]")
@@ -58,6 +79,9 @@ public class ContactInfoPage {
 
     @FindBy(xpath = "//div[@class='popover__inner']//span[@class='action-button__icon icon-delete']")
     public WebElement deleteInsideTripleMenu;
+
+    @FindBy (xpath = "//div[@class='empty-content']")
+    public WebElement contactDeleteNoteProof;
 
 
     @FindBy(xpath = "//span[@class='mx-calendar-header-label']//button[@type='button'][1]")
